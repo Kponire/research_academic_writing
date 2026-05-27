@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage";
 import AppLayout from "./components/layout/AppLayout";
 import GeneratePaperPage from "./pages/GeneratePaperPage";
@@ -10,11 +14,18 @@ import { ReviewsPage } from "./pages/ReviewsPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import { AchievementsPage } from "./pages/AchievementsPage";
 import { SettingsPage } from "./pages/SettingsPage";
+import ErrorPage from "./pages/error-page";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Navigate to="/dashboard" replace />,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: "/dashboard/",
     element: <AppLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
